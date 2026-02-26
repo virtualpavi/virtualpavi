@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://virtualpavi.ca',
+  site: 'https://virtualpavi.com',
   output: 'static',
   integrations: [
     sitemap(),

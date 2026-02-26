@@ -167,9 +167,9 @@ Enabled via Cloudflare. Prevents DNS spoofing and cache poisoning by cryptograph
 Certificate Authority Authorization restricts which CAs can issue certificates:
 
 ```
-virtualpavi.ca. CAA 0 issue "digicert.com"
-virtualpavi.ca. CAA 0 issue "letsencrypt.org"
-virtualpavi.ca. CAA 0 iodef "mailto:security@virtualpavi.ca"
+virtualpavi.com. CAA 0 issue "digicert.com"
+virtualpavi.com. CAA 0 issue "letsencrypt.org"
+virtualpavi.com. CAA 0 iodef "mailto:security@virtualpavi.com"
 ```
 
 ## Security.txt

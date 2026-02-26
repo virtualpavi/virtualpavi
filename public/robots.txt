@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://virtualpavi.ca/sitemap-index.xml
+Sitemap: https://virtualpavi.com/sitemap-index.xml

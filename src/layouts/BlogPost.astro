@@ -98,7 +98,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
         <div class="flex items-center gap-4">
           <span class="text-sm text-cyber-steel">Share:</span>
           <a 
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://virtualpavi.ca/blog/${Astro.url.pathname}`)}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://virtualpavi.com/blog/${Astro.url.pathname}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             class="text-cyber-steel hover:text-neon-cyan transition-colors"
@@ -107,7 +107,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
             <Icon name="simple-icons:x" class="w-5 h-5" />
           </a>
           <a 
-            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://virtualpavi.ca/blog/${Astro.url.pathname}`)}&title=${encodeURIComponent(title)}`}
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://virtualpavi.com/blog/${Astro.url.pathname}`)}&title=${encodeURIComponent(title)}`}
             target="_blank"
             rel="noopener noreferrer"
             class="text-cyber-steel hover:text-neon-cyan transition-colors"

@@ -1,5 +1,5 @@
-Contact: mailto:security@virtualpavi.ca
-Expires: 2027-12-31T23:59:00.000Z
+Contact: mailto:security@virtualpavi.com
+Expires: 2027-02-26T00:00:00.000Z
 Preferred-Languages: en
-Canonical: https://virtualpavi.ca/.well-known/security.txt
-Policy: https://virtualpavi.ca/security-policy
+Canonical: https://virtualpavi.com/.well-known/security.txt
+Policy: https://virtualpavi.com/security-policy
