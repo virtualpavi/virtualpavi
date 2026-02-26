@@ -178,10 +178,10 @@ Following RFC 9116, I publish security contact information:
 
 ```
 # public/.well-known/security.txt
-Contact: mailto:security@virtualpavi.ca
+Contact: mailto:security@virtualpavi.com
 Expires: 2027-12-31T23:59:00.000Z
 Preferred-Languages: en
-Canonical: https://virtualpavi.ca/.well-known/security.txt
+Canonical: https://virtualpavi.com/.well-known/security.txt
 ```
 
 This provides a standardized way for security researchers to report vulnerabilities.
