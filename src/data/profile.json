@@ -1,0 +1,134 @@
+{
+  "name": "Pavi Singh",
+  "headline": "Securing Systems. Automating Everything.",
+  "profileImage": "./src/data/profile-image.jpeg",
+  "currentRole": {
+    "title": "System Security Specialist",
+    "company": "Government of Yukon",
+    "location": "Yukon, Canada",
+    "startDate": "2023-04"
+  },
+  "currentFocus": "Information Security",
+  "about": "System Security Specialist with 7+ years of experience in IT infrastructure and cybersecurity. From network administration across 13 campuses to securing government systems, I've evolved from managing routers and firewalls to orchestrating enterprise security solutions. Deep expertise in automation, threat detection, and infrastructure security. I build tools that scale security operations and eliminate manual processes.",
+  "experience": [
+    {
+      "title": "System Security Specialist",
+      "company": "Government of Yukon",
+      "location": "Yukon, Canada",
+      "startDate": "2023-04",
+      "endDate": "present",
+      "highlights": [
+        "Protect critical government information systems from cyber threats",
+        "Identify vulnerabilities and develop security strategies",
+        "Collaborate with cross-functional teams on security initiatives",
+        "Implement security protocols and monitoring solutions",
+        "Automate security workflows using SOAR platforms and custom scripts"
+      ]
+    },
+    {
+      "title": "Network Administrator",
+      "company": "Yukon University",
+      "location": "Yukon, Canada",
+      "startDate": "2021-01",
+      "endDate": "2023-04",
+      "highlights": [
+        "Administered network infrastructure across 13 campuses throughout Yukon Territory",
+        "Managed Switches, Routers, Cisco ISE, and Palo Alto Firewalls and IPS systems",
+        "Wrote Python and Ansible scripts to automate system component updates",
+        "Managed wireless infrastructure (Cisco, Unifi, and Fortinet controllers and APs)",
+        "Set up secure Wi-Fi, LAN and VoIP networks at remote locations",
+        "Managed application patches, data backup, security changes and network configuration"
+      ]
+    },
+    {
+      "title": "IT Support Technician",
+      "company": "Yukon University",
+      "location": "Yukon, Canada",
+      "startDate": "2019-08",
+      "endDate": "2021-01",
+      "highlights": [
+        "Resolved complex issues including system crashes, network slowdowns, and security breaches",
+        "Helped migrate Office 365 to new tenant environment",
+        "Wrote PowerShell and Python scripts to automate multiple tasks",
+        "Used PDQ Deploy for application deployment on end user machines",
+        "Introduced new asset management system for improved IT operations"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Security+",
+      "issuer": "CompTIA",
+      "date": "2023",
+      "color": "#C8202F"
+    },
+    {
+      "name": "Network+",
+      "issuer": "CompTIA",
+      "date": "2022",
+      "color": "#C8202F"
+    }
+  ],
+  "skills": {
+    "languages": [
+      { "name": "Python", "level": "expert" },
+      { "name": "Bash", "level": "expert" },
+      { "name": "PowerShell", "level": "expert" },
+      { "name": "SQL", "level": "proficient" },
+      { "name": "JavaScript", "level": "proficient" },
+      { "name": "Go", "level": "familiar" },
+      { "name": "NIST CSF", "level": "proficient" },
+      { "name": "CIS Controls", "level": "proficient" },
+      { "name": "MITRE ATT&CK", "level": "proficient" }
+    ],
+    "tools": [
+      { "name": "Microsoft Defender", "level": "expert" },
+      { "name": "Microsoft Sentinel", "level": "expert" },
+      { "name": "Elastic Stack", "level": "proficient" },
+      { "name": "Wireshark", "level": "proficient" },
+      { "name": "Docker", "level": "proficient" },
+      { "name": "GitHub Actions", "level": "proficient" },
+      { "name": "Ansible", "level": "proficient" },
+      { "name": "Nginx", "level": "proficient" },
+      { "name": "Nmap", "level": "proficient" },
+      { "name": "Splunk", "level": "proficient" },
+      { "name": "Windmill", "level": "familiar" },
+      { "name": "Nessus", "level": "familiar" },
+      { "name": "Burp Suite", "level": "familiar" }
+    ],
+    "platforms": [
+      { "name": "Azure", "level": "expert" },
+      { "name": "Linux", "level": "expert" },
+      { "name": "Microsoft 365", "level": "expert" },
+      { "name": "Active Directory", "level": "expert" },
+      { "name": "Entra ID", "level": "proficient" },
+      { "name": "AWS", "level": "familiar" }
+    ],
+    "security": [
+      { "name": "Palo Alto", "level": "expert" },
+      { "name": "Fortigate", "level": "proficient" },
+      { "name": "Checkpoint", "level": "proficient" },
+      { "name": "Cisco ISE", "level": "proficient" },
+      { "name": "SOAR Automation", "level": "proficient" },
+      { "name": "AI Security Tools", "level": "proficient" }
+    ]
+  },
+  "education": [
+    {
+      "degree": "Diploma",
+      "field": "Computer Systems Networking and Telecommunications",
+      "school": "Seneca College",
+      "year": "2016"
+    }
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/pavitardeep-singh-785b80169/",
+    "github": "https://github.com/virtualpavi",
+    "twitter": ""
+  },
+  "stats": {
+    "yearsExperience": 7,
+    "certificationsCount": 2,
+    "projectsCount": 15
+  }
+}

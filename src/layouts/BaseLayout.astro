@@ -1,0 +1,79 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import SEO from '@/components/SEO.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedDate?: Date;
+  modifiedDate?: Date;
+}
+
+const { 
+  title,
+  description = "Cybersecurity Specialist focused on automating security at scale. Expertise in threat detection, infrastructure security, and security automation.",
+  image = "/og-image.png",
+  type = "website",
+  publishedDate,
+  modifiedDate
+} = Astro.props;
+
+const siteTitle = title === "Home" ? "virtualpavi.ca" : `${title} | virtualpavi.ca`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="virtualpavi.ca Blog RSS" href="/rss.xml" />
+    
+    <SEO 
+      title={siteTitle}
+      description={description}
+      image={image}
+      type={type}
+      publishedDate={publishedDate}
+      modifiedDate={modifiedDate}
+    />
+
+    <!-- Preload fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  </head>
+  <body class="min-h-screen flex flex-col bg-cyber-dark text-cyber-light">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <Header />
+    
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    
+    <Footer />
+
+    <!-- JSON-LD Structured Data for Person -->
+    {type === 'website' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pavi Singh",
+        "jobTitle": "System Security Specialist",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Government of Yukon"
+        },
+        "url": "https://virtualpavi.ca",
+        "sameAs": [
+          "https://www.linkedin.com/in/pavitardeep-singh-785b80169/",
+          "https://github.com/virtualpavi"
+        ]
+      })} />
+    )}
+  </body>
+</html>

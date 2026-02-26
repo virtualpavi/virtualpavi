@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon/components';
+import profile from '@/data/profile.json';
+
+const currentYear = new Date().getFullYear();
+const { social } = profile;
+---
+
+<footer class="bg-cyber-darker border-t border-cyber-navy">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-cyber-light mb-4">
+          <Icon name="lucide:shield-check" class="w-6 h-6 text-neon-cyan" />
+          <span>virtualpavi</span>
+          <span class="text-neon-cyan">.ca</span>
+        </a>
+        <p class="text-cyber-steel text-sm">
+          Cybersecurity specialist automating security at scale. Protecting digital infrastructure from threats.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold text-cyber-light uppercase tracking-wider mb-4">
+          Quick Links
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/" class="text-cyber-steel hover:text-neon-cyan transition-colors text-sm">Home</a>
+          </li>
+          <li>
+            <a href="/blog" class="text-cyber-steel hover:text-neon-cyan transition-colors text-sm">Blog</a>
+          </li>
+          <li>
+            <a href="/contact" class="text-cyber-steel hover:text-neon-cyan transition-colors text-sm">Contact</a>
+          </li>
+          <li>
+            <a href="/rss.xml" class="text-cyber-steel hover:text-neon-cyan transition-colors text-sm">RSS Feed</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <h3 class="text-sm font-semibold text-cyber-light uppercase tracking-wider mb-4">
+          Connect
+        </h3>
+        <div class="flex gap-4">
+          {social.linkedin && (
+            <a 
+              href={social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-2 bg-cyber-navy rounded-lg text-cyber-steel hover:text-neon-cyan hover:bg-cyber-slate/30 transition-colors"
+              aria-label="LinkedIn Profile"
+            >
+              <Icon name="simple-icons:linkedin" class="w-5 h-5" />
+            </a>
+          )}
+          {social.github && (
+            <a 
+              href={social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-2 bg-cyber-navy rounded-lg text-cyber-steel hover:text-neon-cyan hover:bg-cyber-slate/30 transition-colors"
+              aria-label="GitHub Profile"
+            >
+              <Icon name="simple-icons:github" class="w-5 h-5" />
+            </a>
+          )}
+          <a 
+            href="mailto:contact@virtualpavi.ca"
+            class="p-2 bg-cyber-navy rounded-lg text-cyber-steel hover:text-neon-cyan hover:bg-cyber-slate/30 transition-colors"
+            aria-label="Send Email"
+          >
+            <Icon name="lucide:mail" class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-8 pt-8 border-t border-cyber-navy flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-cyber-slate text-sm">
+        &copy; {currentYear} Pavi Singh. All rights reserved.
+      </p>
+      <p class="text-cyber-slate text-xs">
+        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-neon-cyan hover:underline">Astro</a> 
+        &amp; secured with <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-neon-cyan hover:underline">Cloudflare</a>
+      </p>
+    </div>
+  </div>
+</footer>

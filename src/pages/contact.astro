@@ -1,0 +1,197 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import profile from '@/data/profile.json';
+
+const { social } = profile;
+---
+
+<BaseLayout 
+  title="Contact"
+  description="Get in touch for security consultations, collaborations, or just to connect."
+>
+  <section class="py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <div class="flex justify-center items-center gap-4 mb-4">
+          <Icon name="lucide:mail" class="w-6 h-6 text-neon-cyan" />
+          <h1 class="text-3xl sm:text-4xl font-bold text-cyber-light">Get in Touch</h1>
+        </div>
+        <p class="text-cyber-steel max-w-xl mx-auto">
+          Have a security question, want to collaborate on automation projects, or just want to connect? Drop me a message.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Contact Form -->
+        <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6">
+          <h2 class="text-xl font-semibold text-cyber-light mb-6">Send a Message</h2>
+          
+          <form 
+            action="https://formspree.io/f/your-form-id" 
+            method="POST"
+            class="space-y-4"
+          >
+            <!-- Cloudflare Turnstile placeholder - replace with actual key in production -->
+            <input type="hidden" name="_captcha" value="false" />
+            
+            <div>
+              <label for="name" class="block text-sm font-medium text-cyber-light mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-cyber-dark border border-cyber-slate rounded-lg text-cyber-light placeholder-cyber-slate focus:border-neon-cyan focus:outline-none transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-cyber-light mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-cyber-dark border border-cyber-slate rounded-lg text-cyber-light placeholder-cyber-slate focus:border-neon-cyan focus:outline-none transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium text-cyber-light mb-2">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                class="w-full px-4 py-3 bg-cyber-dark border border-cyber-slate rounded-lg text-cyber-light placeholder-cyber-slate focus:border-neon-cyan focus:outline-none transition-colors"
+                placeholder="What's this about?"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-cyber-light mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full px-4 py-3 bg-cyber-dark border border-cyber-slate rounded-lg text-cyber-light placeholder-cyber-slate focus:border-neon-cyan focus:outline-none transition-colors resize-none"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-neon-cyan text-cyber-dark font-semibold rounded-lg hover:bg-neon-blue transition-colors"
+            >
+              <Icon name="lucide:send" class="w-4 h-4" />
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info & Social -->
+        <div class="space-y-6">
+          <!-- Quick Contact -->
+          <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6">
+            <h2 class="text-xl font-semibold text-cyber-light mb-6">Quick Contact</h2>
+            
+            <div class="space-y-4">
+              <a 
+                href="mailto:contact@virtualpavi.ca"
+                class="flex items-center gap-4 p-4 bg-cyber-dark/50 rounded-xl hover:bg-cyber-dark transition-colors group"
+              >
+                <div class="p-3 bg-neon-cyan/10 rounded-lg group-hover:bg-neon-cyan/20 transition-colors">
+                  <Icon name="lucide:mail" class="w-5 h-5 text-neon-cyan" />
+                </div>
+                <div>
+                  <p class="text-sm text-cyber-slate">Email</p>
+                  <p class="text-cyber-light">contact@virtualpavi.ca</p>
+                </div>
+              </a>
+
+              <div class="flex items-center gap-4 p-4 bg-cyber-dark/50 rounded-xl">
+                <div class="p-3 bg-neon-blue/10 rounded-lg">
+                  <Icon name="lucide:map-pin" class="w-5 h-5 text-neon-blue" />
+                </div>
+                <div>
+                  <p class="text-sm text-cyber-slate">Location</p>
+                  <p class="text-cyber-light">Yukon, Canada</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-cyber-dark/50 rounded-xl">
+                <div class="p-3 bg-neon-green/10 rounded-lg">
+                  <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                    <Icon name="lucide:clock" class="w-5 h-5 text-neon-green" />
+                  </span>
+                </div>
+                <div>
+                  <p class="text-sm text-cyber-slate">Availability</p>
+                  <p class="text-cyber-light">Open to opportunities</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6">
+            <h2 class="text-xl font-semibold text-cyber-light mb-6">Connect</h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+              {social.linkedin && (
+                <a 
+                  href={social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-3 p-4 bg-cyber-dark/50 rounded-xl hover:bg-cyber-dark transition-colors group"
+                >
+                  <Icon name="simple-icons:linkedin" class="w-6 h-6 text-cyber-steel group-hover:text-neon-cyan transition-colors" />
+                  <span class="text-cyber-steel group-hover:text-cyber-light transition-colors">LinkedIn</span>
+                </a>
+              )}
+              {social.github && (
+                <a 
+                  href={social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-3 p-4 bg-cyber-dark/50 rounded-xl hover:bg-cyber-dark transition-colors group"
+                >
+                  <Icon name="simple-icons:github" class="w-6 h-6 text-cyber-steel group-hover:text-neon-cyan transition-colors" />
+                  <span class="text-cyber-steel group-hover:text-cyber-light transition-colors">GitHub</span>
+                </a>
+              )}
+            </div>
+          </div>
+
+          <!-- Security Notice -->
+          <div class="p-4 bg-neon-cyan/5 border border-neon-cyan/20 rounded-xl">
+            <div class="flex items-start gap-3">
+              <Icon name="lucide:shield-alert" class="w-5 h-5 text-neon-cyan flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm text-neon-cyan font-medium">Security Notice</p>
+                <p class="text-xs text-cyber-steel mt-1">
+                  For security vulnerabilities, please report via our 
+                  <a href="/.well-known/security.txt" class="text-neon-cyan hover:underline">security.txt</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

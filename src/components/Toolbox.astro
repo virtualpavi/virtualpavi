@@ -1,0 +1,121 @@
+---
+import { Icon } from 'astro-icon/components';
+import profile from '@/data/profile.json';
+
+const { skills } = profile;
+
+// Level indicator component helper
+const getLevelColor = (level: string) => {
+  switch (level) {
+    case 'expert': return 'bg-neon-cyan text-cyber-dark';
+    case 'proficient': return 'bg-neon-blue text-cyber-dark';
+    case 'familiar': return 'bg-cyber-slate text-cyber-light';
+    default: return 'bg-cyber-slate text-cyber-light';
+  }
+};
+
+const getLevelDots = (level: string) => {
+  switch (level) {
+    case 'expert': return 3;
+    case 'proficient': return 2;
+    case 'familiar': return 1;
+    default: return 1;
+  }
+};
+
+interface SkillItem {
+  name: string;
+  level: string;
+}
+
+const categories = [
+  { title: 'Languages & Frameworks', icon: 'lucide:code', items: skills.languages, color: 'neon-cyan' },
+  { title: 'Security Tools', icon: 'lucide:shield', items: skills.tools, color: 'neon-blue' },
+  { title: 'Security Solutions', icon: 'lucide:shield-check', items: skills.security, color: 'neon-pink' },
+  { title: 'Platforms', icon: 'lucide:cloud', items: skills.platforms, color: 'neon-purple' },
+];
+---
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-4 mb-8">
+      <Icon name="lucide:wrench" class="w-6 h-6 text-neon-cyan" />
+      <h2 class="text-2xl sm:text-3xl font-bold text-cyber-light">The Toolbox</h2>
+    </div>
+
+    <!-- Legend -->
+    <div class="flex flex-wrap gap-4 mb-8 text-sm">
+      <div class="flex items-center gap-2">
+        <div class="flex gap-1">
+          <span class="w-2 h-2 rounded-full bg-neon-cyan"></span>
+          <span class="w-2 h-2 rounded-full bg-neon-cyan"></span>
+          <span class="w-2 h-2 rounded-full bg-neon-cyan"></span>
+        </div>
+        <span class="text-cyber-steel">Expert</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex gap-1">
+          <span class="w-2 h-2 rounded-full bg-neon-blue"></span>
+          <span class="w-2 h-2 rounded-full bg-neon-blue"></span>
+          <span class="w-2 h-2 rounded-full bg-cyber-slate"></span>
+        </div>
+        <span class="text-cyber-steel">Proficient</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex gap-1">
+          <span class="w-2 h-2 rounded-full bg-cyber-slate"></span>
+          <span class="w-2 h-2 rounded-full bg-cyber-slate/30"></span>
+          <span class="w-2 h-2 rounded-full bg-cyber-slate/30"></span>
+        </div>
+        <span class="text-cyber-steel">Familiar</span>
+      </div>
+    </div>
+
+    <!-- Skill Categories -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {categories.map((category) => (
+        <div class="bg-cyber-navy/30 border border-cyber-slate rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-6">
+            <div class={`p-2 bg-${category.color}/10 rounded-lg`}>
+              <Icon name={category.icon} class={`w-5 h-5 text-${category.color}`} />
+            </div>
+            <h3 class="text-lg font-semibold text-cyber-light">{category.title}</h3>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {(category.items as SkillItem[]).map((skill) => (
+              <div 
+                class="group relative p-3 bg-cyber-dark/50 border border-cyber-slate/50 rounded-xl hover:border-cyber-slate transition-colors"
+              >
+                <p class="text-sm text-cyber-light font-medium mb-2 truncate" title={skill.name}>
+                  {skill.name}
+                </p>
+                <div class="flex gap-1">
+                  {[1, 2, 3].map((dot) => (
+                    <span 
+                      class:list={[
+                        "w-2 h-2 rounded-full transition-colors",
+                        dot <= getLevelDots(skill.level)
+                          ? skill.level === 'expert' 
+                            ? 'bg-neon-cyan' 
+                            : skill.level === 'proficient'
+                              ? 'bg-neon-blue'
+                              : 'bg-cyber-slate'
+                          : 'bg-cyber-slate/30'
+                      ]}
+                    />
+                  ))}
+                </div>
+                
+                <!-- Tooltip -->
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-cyber-dark border border-cyber-slate rounded text-xs text-cyber-steel opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                  {skill.level.charAt(0).toUpperCase() + skill.level.slice(1)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

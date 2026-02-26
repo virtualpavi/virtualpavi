@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  
+  return uniqueTags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter((post) => post.data.tags.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout 
+  title={`Posts tagged "${tag}"`}
+  description={`All blog posts tagged with "${tag}".`}
+>
+  <section class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-12">
+        <a 
+          href="/blog" 
+          class="inline-flex items-center gap-2 text-cyber-steel hover:text-neon-cyan transition-colors mb-4"
+        >
+          <Icon name="lucide:arrow-left" class="w-4 h-4" />
+          <span>All Posts</span>
+        </a>
+        <div class="flex items-center gap-4">
+          <Icon name="lucide:tag" class="w-6 h-6 text-neon-cyan" />
+          <h1 class="text-3xl sm:text-4xl font-bold text-cyber-light">
+            #{tag}
+          </h1>
+        </div>
+        <p class="text-cyber-steel mt-2">
+          {posts.length} post{posts.length !== 1 ? 's' : ''} tagged with "{tag}"
+        </p>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            slug={post.slug}
+            tags={post.data.tags}
+            readingTime={post.data.readingTime}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

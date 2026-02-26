@@ -1,0 +1,149 @@
+---
+import { Icon } from 'astro-icon/components';
+import profile from '@/data/profile.json';
+
+const { about, experience, certifications } = profile;
+const topExperience = experience.slice(0, 3);
+---
+
+<section class="py-16 bg-cyber-darker/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-4 mb-12">
+      <Icon name="lucide:layout-grid" class="w-6 h-6 text-neon-cyan" />
+      <h2 class="text-2xl sm:text-3xl font-bold text-cyber-light">Overview</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Whoami Card - Spans 2 columns on large screens -->
+      <div class="lg:col-span-2 bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-neon-cyan/10 rounded-lg">
+            <Icon name="lucide:user" class="w-5 h-5 text-neon-cyan" />
+          </div>
+          <h3 class="text-lg font-semibold text-cyber-light">$ whoami</h3>
+        </div>
+        <p class="text-cyber-steel leading-relaxed">
+          {about}
+        </p>
+      </div>
+
+      <!-- Stats Card -->
+      <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-neon-purple/10 rounded-lg">
+            <Icon name="lucide:bar-chart-3" class="w-5 h-5 text-neon-purple" />
+          </div>
+          <h3 class="text-lg font-semibold text-cyber-light">Quick Stats</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <span class="text-cyber-steel">Experience</span>
+            <span class="text-neon-cyan font-mono font-bold">{profile.stats.yearsExperience}+ years</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-cyber-steel">Certifications</span>
+            <span class="text-neon-blue font-mono font-bold">{profile.stats.certificationsCount}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-cyber-steel">Projects</span>
+            <span class="text-neon-purple font-mono font-bold">{profile.stats.projectsCount}+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Card -->
+      <div class="lg:col-span-2 bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-neon-blue/10 rounded-lg">
+            <Icon name="lucide:briefcase" class="w-5 h-5 text-neon-blue" />
+          </div>
+          <h3 class="text-lg font-semibold text-cyber-light">Experience</h3>
+        </div>
+        <div class="space-y-6">
+          {topExperience.map((exp, index) => (
+            <div class:list={["pb-4", index < topExperience.length - 1 && "border-b border-cyber-slate/50"]}>
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                <h4 class="font-semibold text-cyber-light">{exp.title}</h4>
+                <span class="text-xs text-cyber-slate font-mono">
+                  {exp.startDate} - {exp.endDate}
+                </span>
+              </div>
+              <p class="text-neon-cyan text-sm mb-3">{exp.company} • {exp.location}</p>
+              <ul class="space-y-1">
+                {exp.highlights.slice(0, 3).map((highlight) => (
+                  <li class="flex items-start gap-2 text-sm text-cyber-steel">
+                    <Icon name="lucide:chevron-right" class="w-4 h-4 text-neon-cyan flex-shrink-0 mt-0.5" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications Card -->
+      <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-neon-green/10 rounded-lg">
+            <Icon name="lucide:award" class="w-5 h-5 text-neon-green" />
+          </div>
+          <h3 class="text-lg font-semibold text-cyber-light">Certifications</h3>
+        </div>
+        <div class="space-y-4">
+          {certifications.map((cert) => (
+            <div 
+              class="p-3 rounded-xl border-l-4 bg-cyber-dark/50"
+              style={`border-color: ${cert.color}`}
+            >
+              <p class="font-semibold text-cyber-light">{cert.name}</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-sm text-cyber-steel">{cert.issuer}</span>
+                <span class="text-xs text-cyber-slate font-mono">{cert.date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Education Card -->
+      <div class="bg-cyber-navy/50 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="p-2 bg-neon-yellow/10 rounded-lg">
+            <Icon name="lucide:graduation-cap" class="w-5 h-5 text-neon-yellow" />
+          </div>
+          <h3 class="text-lg font-semibold text-cyber-light">Education</h3>
+        </div>
+        <div class="space-y-4">
+          {profile.education.map((edu) => (
+            <div>
+              <p class="font-semibold text-cyber-light">{edu.degree}</p>
+              <p class="text-neon-cyan text-sm">{edu.field}</p>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-sm text-cyber-steel">{edu.school}</span>
+                <span class="text-xs text-cyber-slate font-mono">{edu.year}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="lg:col-span-2 bg-gradient-to-r from-neon-cyan/10 via-neon-blue/10 to-neon-purple/10 border border-cyber-slate rounded-2xl p-6 card-hover">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-semibold text-cyber-light mb-2">Interested in working together?</h3>
+            <p class="text-cyber-steel text-sm">Let's discuss how I can help secure your infrastructure.</p>
+          </div>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-neon-cyan text-cyber-dark font-semibold rounded-lg hover:bg-neon-blue transition-colors whitespace-nowrap"
+          >
+            <Icon name="lucide:message-circle" class="w-4 h-4" />
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

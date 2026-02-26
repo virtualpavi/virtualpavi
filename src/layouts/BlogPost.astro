@@ -1,0 +1,122 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  readingTime?: string;
+}
+
+const { title, description, pubDate, updatedDate, tags, readingTime } = Astro.props;
+
+const formattedPubDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  type="article"
+  publishedDate={pubDate}
+  modifiedDate={updatedDate}
+>
+  <article class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <!-- Back link -->
+    <a 
+      href="/blog" 
+      class="inline-flex items-center gap-2 text-cyber-steel hover:text-neon-cyan transition-colors mb-8"
+    >
+      <Icon name="lucide:arrow-left" class="w-4 h-4" />
+      <span>Back to Blog</span>
+    </a>
+
+    <!-- Article header -->
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyber-light mb-4 leading-tight">
+        {title}
+      </h1>
+      
+      <div class="flex flex-wrap items-center gap-4 text-sm text-cyber-steel mb-6">
+        <time datetime={pubDate.toISOString()} class="flex items-center gap-1">
+          <Icon name="lucide:calendar" class="w-4 h-4" />
+          {formattedPubDate}
+        </time>
+        
+        {readingTime && (
+          <span class="flex items-center gap-1">
+            <Icon name="lucide:clock" class="w-4 h-4" />
+            {readingTime}
+          </span>
+        )}
+
+        {updatedDate && (
+          <span class="flex items-center gap-1">
+            <Icon name="lucide:refresh-cw" class="w-4 h-4" />
+            Updated: {formattedUpdatedDate}
+          </span>
+        )}
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <a 
+            href={`/blog/tags/${tag}`}
+            class="px-3 py-1 text-xs font-medium bg-cyber-navy border border-cyber-slate rounded-full text-neon-cyan hover:bg-cyber-slate/30 transition-colors"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- Article content -->
+    <div class="prose prose-lg prose-invert max-w-none">
+      <slot />
+    </div>
+
+    <!-- Article footer -->
+    <footer class="mt-12 pt-8 border-t border-cyber-navy">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="text-cyber-steel">
+          <p class="text-sm">Written by <span class="text-neon-cyan">Pavi Singh</span></p>
+        </div>
+        
+        <div class="flex items-center gap-4">
+          <span class="text-sm text-cyber-steel">Share:</span>
+          <a 
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://virtualpavi.ca/blog/${Astro.url.pathname}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-cyber-steel hover:text-neon-cyan transition-colors"
+            aria-label="Share on Twitter"
+          >
+            <Icon name="simple-icons:x" class="w-5 h-5" />
+          </a>
+          <a 
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://virtualpavi.ca/blog/${Astro.url.pathname}`)}&title=${encodeURIComponent(title)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-cyber-steel hover:text-neon-cyan transition-colors"
+            aria-label="Share on LinkedIn"
+          >
+            <Icon name="simple-icons:linkedin" class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>
